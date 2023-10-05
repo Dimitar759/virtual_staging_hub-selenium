@@ -138,7 +138,7 @@ namespace Virtual_staging_hub
             js.ExecuteScript("arguments[0].click();", submitClickable);
 
             
-
+            
         }
     }
 }
