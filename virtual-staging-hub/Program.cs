@@ -137,17 +137,7 @@ namespace Virtual_staging_hub
 
             js.ExecuteScript("arguments[0].click();", submitClickable);
 
-            //asdasdasd
-            ///sdafsdf
-            ////
-            ///asf/asdf/as
-            ///f/asf/as
-            ////dfasd/fa
-            ///s/df
-            ///a/s/df
-            ///as/df/asdf
-            ////as/df/a
-            ///sf/
+            
 
         }
     }
