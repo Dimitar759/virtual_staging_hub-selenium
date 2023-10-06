@@ -121,13 +121,14 @@ namespace Virtual_staging_hub
             js.ExecuteScript("arguments[0].click();", starsClickable);
 
             IWebElement reviewText = driver.FindElement(By.Id("comment"));
-            reviewText.SendKeys("sadf dafdasf dssda asdf!");
+            string randomMessage = GenerateRandomMessage();
+            reviewText.SendKeys(randomMessage);
 
             IWebElement nameField = driver.FindElement(By.Id("author"));
-            nameField.SendKeys("John Doe");
+            nameField.SendKeys("Stephan Graham");
 
             IWebElement emailField = driver.FindElement(By.Id("email"));
-            emailField.SendKeys("johndoe@example.com");
+            emailField.SendKeys("stephangraham@gmail.com");
 
             IWebElement submitButton = driver.FindElement(By.Id("submit"));
 
@@ -137,8 +138,27 @@ namespace Virtual_staging_hub
 
             js.ExecuteScript("arguments[0].click();", submitClickable);
 
-            
-            
+            IWebElement approvalMessage = driver.FindElement(By.ClassName("woocommerce-review__awaiting-approval"));
+            wait2.Until(ElementIsVisible(By.ClassName("woocommerce-review__awaiting-approval")));
+            Assert.IsTrue(approvalMessage.Displayed, "Review submission was not successful.");
+
+            string expectedMessage = "Your review is awaiting approval";
+            string actualMessage = approvalMessage.Text.Trim();
+            Assert.AreEqual(expectedMessage, actualMessage, "Approval message text is incorrect.");
+
+        }
+
+        private string GenerateRandomMessage()
+        {
+            //this is made this way because the website doesnt allow the same messages to be entered more than once
+            //so i made this random message generator that should never enter the same message twice
+            string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            Random random = new Random();
+            int length = random.Next(20, 100); 
+            string randomMessage = new string(Enumerable.Repeat(characters, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            return randomMessage;
         }
     }
 }
