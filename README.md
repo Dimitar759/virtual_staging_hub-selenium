@@ -1,11 +1,11 @@
-# Interior Design eCommerce Store
+# Interior Design eCommerce Store Testing
 
 ## Project Overview
 
-- **Project Name:** Interior Design eCommerce Store
-- **Date:** [Date of Project Creation/Testing]
-- **Author:** [Your Name]
-- **Project Status:** [Testing/Development/Completed]
+- **Project Name:** Interior Design eCommerce Store Testing
+- **Date:** 01.10.2023
+- **Author:** Dimitar Nikolov
+- **Project Status:** In process
 
 ## Introduction
 
