@@ -1,4 +1,4 @@
-Bug Report
+###Bug Report
 
 Title: Login Issue on "https://prod.virtualstagingplans.com/my-account/"
 
