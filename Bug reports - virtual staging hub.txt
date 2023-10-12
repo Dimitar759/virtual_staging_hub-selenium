@@ -1,5 +1,6 @@
-###Bug Report
+Bug Report
 
+Bug 1:
 Title: Login Issue on "https://prod.virtualstagingplans.com/my-account/"
 
 Priority: HIGH
