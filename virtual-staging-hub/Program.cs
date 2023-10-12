@@ -219,9 +219,10 @@ namespace Virtual_staging_hub
             IWebElement registerButton = driver.FindElement(By.Name("register"));
             registerButton.Click();
 
+            
 
         }
-
+        ///////////////// 
 
     }
 }
