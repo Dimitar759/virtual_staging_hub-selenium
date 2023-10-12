@@ -104,7 +104,6 @@ namespace Virtual_staging_hub
         [Test]
         public void SubmitFiveStarReview()
         {
-            // Navigate to the website
             driver.Navigate().GoToUrl("https://virtualstaginghub.com/product/staging/?unapproved=103&moderation-hash=19f2b4d9243e41a7afb9b6b57433b5cd#comment-103");
 
             IWebElement reviewsButton = driver.FindElement(By.CssSelector("button[aria-controls='reviews-accordion']"));
@@ -160,5 +159,62 @@ namespace Virtual_staging_hub
 
             return randomMessage;
         }
+
+        [Test]
+        public void AddToCart()
+        {
+            driver.Navigate().GoToUrl("https://virtualstaginghub.com/product/staging/");
+
+            try
+            {
+                IWebElement addToCartButton = driver.FindElement(By.CssSelector(".single_add_to_cart_button"));
+                ScrollToElement(driver, addToCartButton);
+                addToCartButton.Click();
+
+                WebDriverWait wait2 = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                IWebElement viewCartButton = wait2.Until(ElementToBeClickable(By.CssSelector("a[title='Cart']")));
+
+                viewCartButton.Click();
+
+                IWebElement cartItem = wait2.Until(ElementExists(By.CssSelector(".woocommerce-cart-form__cart-item")));
+
+                if (cartItem.Displayed)
+                {
+                    Console.WriteLine("Service is in the cart.");
+                }
+                else
+                {
+                    Console.WriteLine("Service is not in the cart.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+            
+        }
+
+        // Helper method to scroll to an element
+        private static void ScrollToElement(IWebDriver driver, IWebElement element)
+        {
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
+        }
+
+
+        [Test]
+        public void Register()
+        {
+            driver.Navigate().GoToUrl("https://virtualstaginghub.com/");
+
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight);");
+
+            IWebElement myAccountButton = driver.FindElement(By.CssSelector("a[href='https://prod.virtualstagingplans.com/my-account/']"));
+            myAccountButton.Click();
+           
+
+        }
+
+
     }
 }
