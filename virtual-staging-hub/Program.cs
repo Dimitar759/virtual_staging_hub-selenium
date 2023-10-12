@@ -194,7 +194,7 @@ namespace Virtual_staging_hub
             
         }
 
-        // Helper method to scroll to an element
+        
         private static void ScrollToElement(IWebDriver driver, IWebElement element)
         {
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
@@ -211,7 +211,14 @@ namespace Virtual_staging_hub
 
             IWebElement myAccountButton = driver.FindElement(By.CssSelector("a[href='https://prod.virtualstagingplans.com/my-account/']"));
             myAccountButton.Click();
-           
+
+            string randomEmail = GenerateRandomEmail();
+            IWebElement emailField = driver.FindElement(By.Name("email"));
+            emailField.SendKeys(randomEmail);
+
+            IWebElement registerButton = driver.FindElement(By.Name("register"));
+            registerButton.Click();
+
 
         }
 
