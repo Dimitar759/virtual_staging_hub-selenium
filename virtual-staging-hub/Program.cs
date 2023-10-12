@@ -219,10 +219,16 @@ namespace Virtual_staging_hub
             IWebElement registerButton = driver.FindElement(By.Name("register"));
             registerButton.Click();
 
-            
+            IWebElement helloTextElement = driver.FindElement(By.XPath("//*[contains(text(),'Hello')]"));
+
+            bool isHelloTextVisible = helloTextElement.Displayed;
+
+            Assert.IsTrue(isHelloTextVisible, "Expected 'Hello' text to be visible.");
+
+
 
         }
-        
+
 
     }
 }
