@@ -153,7 +153,7 @@ namespace Virtual_staging_hub
             //so i made this random message generator that should never enter the same message twice
             string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             Random random = new Random();
-            int length = random.Next(20, 100); 
+            int length = random.Next(20, 100);
             string randomMessage = new string(Enumerable.Repeat(characters, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
 
@@ -172,7 +172,7 @@ namespace Virtual_staging_hub
                 addToCartButton.Click();
 
                 WebDriverWait wait2 = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                IWebElement viewCartButton = wait2.Until(ElementToBeClickable(By.CssSelector("a[title='Cart']")));
+                IWebElement viewCartButton = wait2.Until(ElementToBeClickable(By.CssSelector("\"a[href='https://virtualstaginghub.com/cart/'][class='button wc-forward']")));
 
                 viewCartButton.Click();
 
@@ -191,10 +191,10 @@ namespace Virtual_staging_hub
             {
                 Console.WriteLine("An error occurred: " + ex.Message);
             }
-            
+
         }
 
-        
+
         private static void ScrollToElement(IWebDriver driver, IWebElement element)
         {
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
@@ -229,6 +229,77 @@ namespace Virtual_staging_hub
 
         }
 
+        [Test]
+        public void Checkout()
+        {
+            driver.Navigate().GoToUrl("https://virtualstaginghub.com/product/staging/");
 
+            IWebElement addToCartButton = driver.FindElement(By.CssSelector(".single_add_to_cart_button"));
+            addToCartButton.Click();
+
+            WebDriverWait wait2 = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IWebElement viewCartButton = wait2.Until(ElementToBeClickable(By.CssSelector("a[href='https://virtualstaginghub.com/cart/'][class='button wc-forward']")));
+
+            viewCartButton.Click();
+
+            IWebElement cartItem = wait2.Until(ElementExists(By.CssSelector(".woocommerce-cart-form__cart-item")));
+
+            IWebElement proceedToCheckout = wait2.Until(ElementExists(By.CssSelector("a[href = 'https://virtualstaginghub.com/checkout/']")));
+            proceedToCheckout.Click();
+
+            IWebElement firstNameField = driver.FindElement(By.Id("billing_first_name"));
+            firstNameField.SendKeys("John");
+
+            IWebElement lastNameField = driver.FindElement(By.Id("billing_last_name"));
+            lastNameField.SendKeys("Doe");
+
+            IWebElement companyNameField = driver.FindElement(By.Id("billing_company"));
+            companyNameField.SendKeys("ABC Inc.");
+
+            IWebElement countryDropdown = driver.FindElement(By.Id("billing_country"));
+            SelectElement selectCountry = new SelectElement(countryDropdown);
+            selectCountry.SelectByText("North Macedonia");
+
+            IWebElement streetAddressField = driver.FindElement(By.Id("billing_address_1"));
+            streetAddressField.SendKeys("123 Main Street");
+
+            IWebElement cityField = driver.FindElement(By.Id("billing_city"));
+            cityField.SendKeys("Skopje");
+
+            IWebElement stateField = driver.FindElement(By.Id("billing_state"));
+            stateField.SendKeys("Skopje");
+
+            IWebElement postcodeField = driver.FindElement(By.Id("billing_postcode"));
+            postcodeField.SendKeys("1000");
+
+            IWebElement phoneField = driver.FindElement(By.Id("billing_phone"));
+            phoneField.SendKeys("1234567890");
+
+            string randomEmail = GenerateRandomEmail();
+            IWebElement emailField = driver.FindElement(By.Id("billing_email"));
+            emailField.SendKeys(randomEmail);
+
+            List<IWebElement> paymentMethods = driver.FindElements(By.Id("buttons-container")).ToList();
+
+
+            IWebElement debitOrCreditCardButton = paymentMethods.FirstOrDefault(el => el.Text.Contains("Debit or Credit Card"));
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", debitOrCreditCardButton);
+            debitOrCreditCardButton.Click();
+
+            IWebElement cardNumberField = driver.FindElement(By.Id("credit-card-number"));
+            cardNumberField.Clear();
+            cardNumberField.SendKeys("2354 2452 3524 1461");
+
+            IWebElement expiryField = driver.FindElement(By.Id("expiry-date"));
+            expiryField.Clear();
+            expiryField.SendKeys("03 / 34"); 
+
+            IWebElement cscField = driver.FindElement(By.Id("credit-card-security"));
+            cscField.Clear();
+            cscField.SendKeys("233"); 
+
+            IWebElement payButton = driver.FindElement(By.Id("submit-button"));
+            payButton.Click();
+        }
     }
 }
