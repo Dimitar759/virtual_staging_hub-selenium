@@ -17,6 +17,7 @@ namespace Virtual_staging_hub
     {
         IWebDriver driver;
         WebDriverWait wait;
+        Actions actions;
 
 
         [SetUp]
@@ -29,7 +30,7 @@ namespace Virtual_staging_hub
 
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(100));
 
-
+            actions = new Actions(driver);
         }
 
         [TearDown]
@@ -63,7 +64,7 @@ namespace Virtual_staging_hub
             IWebElement getItFreeButton = wait2.Until(ElementToBeClickable(By.Id("submit")));
             getItFreeButton.Click();
 
-            wait2.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div[class='wpcf7-response-output'][aria-hidden='true']")));
+            wait2.Until(ElementIsVisible(By.CssSelector("div[class='wpcf7-response-output'][aria-hidden='true']")));
             IWebElement responseOutput = driver.FindElement(By.CssSelector("div[class='wpcf7-response-output'][aria-hidden='true']"));
 
 
@@ -292,14 +293,43 @@ namespace Virtual_staging_hub
 
             IWebElement expiryField = driver.FindElement(By.Id("expiry-date"));
             expiryField.Clear();
-            expiryField.SendKeys("03 / 34"); 
+            expiryField.SendKeys("03 / 34");
 
             IWebElement cscField = driver.FindElement(By.Id("credit-card-security"));
             cscField.Clear();
-            cscField.SendKeys("233"); 
+            cscField.SendKeys("233");
 
             IWebElement payButton = driver.FindElement(By.Id("submit-button"));
             payButton.Click();
+
+
+        }
+
+        [Test]
+        public void OpenBlogPost()
+        {
+            driver.Navigate().GoToUrl("https://virtualstaginghub.com/");
+
+            WebDriverWait wait2 = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight);");
+
+            IWebElement blogButton = driver.FindElement(By.CssSelector("a[href='https://virtualstaginghub.com/blog/']"));
+            wait2.Until(ElementToBeClickable(By.CssSelector("a[href='https://virtualstaginghub.com/blog/']")));
+            blogButton.Click();
+
+            IWebElement blogPost = driver.FindElement(By.CssSelector("a[href='https://virtualstaginghub.com/blog/how-to-stage-a-master-bedroom-best-practices/']"));
+            wait2.Until(ElementToBeClickable(By.ClassName("b-posts__grid-item")));
+            blogPost.Click();
+
+            wait2.Until(UrlToBe("https://virtualstaginghub.com/blog/how-to-stage-a-master-bedroom-best-practices/"));
+
+            string expectedUrl = "https://virtualstaginghub.com/blog/how-to-stage-a-master-bedroom-best-practices/";
+
+            string actualUrl = driver.Url;
+
+            Assert.AreEqual(expectedUrl, actualUrl);
         }
     }
 }
