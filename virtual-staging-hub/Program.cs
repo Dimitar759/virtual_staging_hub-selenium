@@ -329,7 +329,7 @@ namespace Virtual_staging_hub
 
             string actualUrl = driver.Url;
 
-            Assert.AreEqual(expectedUrl, actualUrl);
+            Assert.AreEqual(expectedUrl, actualUrl); 
         }
     }
 }
