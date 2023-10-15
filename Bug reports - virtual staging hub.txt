@@ -51,4 +51,3 @@ There should be a password field available and it shouldn't be logging in the us
 
 Actual Behavior:
 Upon entering an email address and clicking "Register," the user is immediately logged in without the requirement of a password.
->>>>>>> 2a80a3f89bee41072d8409517fc169e3fc256d81
