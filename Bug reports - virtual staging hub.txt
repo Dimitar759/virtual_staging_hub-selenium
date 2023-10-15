@@ -1,0 +1,53 @@
+<<<<<<< HEAD
+Bug Report
+
+Title: Login Issue on "https://prod.virtualstagingplans.com/my-account/"
+
+Priority: HIGH
+
+Severity: Major
+
+Description:
+When attempting to register on the URL "https://prod.virtualstagingplans.com/my-account/", the user only types in the email and after
+clicking "Register" the user is immediately logged in, also there is no password field.
+
+Steps to Reproduce:
+
+1.Open a web browser.
+2.Navigate to "https://prod.virtualstagingplans.com/my-account/".
+3.Observe that there is no password field available for entering credentials.
+4.Enter an email address in the provided "Email" field.
+5.Click on the "Register" button.
+
+Expected Behavior:
+There should be a password field available and it shouldn't be logging in the user
+
+Actual Behavior:
+Upon entering an email address and clicking "Register," the user is immediately logged in without the requirement of a password.
+=======
+Bug Report
+
+Bug 1:
+Title: Login Issue on "https://prod.virtualstagingplans.com/my-account/"
+
+Priority: HIGH
+
+Severity: Major
+
+Description:
+When attempting to register on the URL "https://prod.virtualstagingplans.com/my-account/", the user only types in the email and after
+clicking "Register" the user is immediately logged in, also there is no password field.
+
+Steps to Reproduce:
+
+1.Open a web browser.
+2.Navigate to "https://prod.virtualstagingplans.com/my-account/".
+3.Observe that there is no password field available for entering credentials.
+4.Enter an email address in the provided "Email" field.
+5.Click on the "Register" button.
+
+Expected Behavior:
+There should be a password field available and it shouldn't be logging in the user
+
+Actual Behavior:
+Upon entering an email address and clicking "Register," the user is immediately logged in without the requirement of a password.
