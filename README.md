@@ -15,21 +15,22 @@ The Interior Design eCommerce Store is an innovative online platform dedicated t
 
 ### 1. Product Catalog
 
-- Explore a diverse catalog of furniture, decor items, and design accessories.
-- Search and filter products by style, room type, color, and more.
+- Explore a diverse catalog of virtual design services.
+- Search and filter products by real estate, commercial, office, and exterior staging.
 - Detailed product descriptions, images, and customer reviews.
+- Explore services for different rooms: living room, kitchen, bedroom and dining room.
 
 ### 2. Design Inspiration
 
 - Discover inspiring interior design ideas and trends.
 - View professionally designed rooms and spaces for inspiration.
-- Get tips and tricks for decorating your own space.
+- Virtually design your room.
 
 ### 3. Design Services
 
-- Connect with experienced interior designers.
-- Request personalized design consultations.
-- Collaborate on creating your dream interior.
+- Virtual staging.
+- Virtual twilight.
+- Virtual renovation.
 
 ### 4. User Accounts
 
@@ -45,10 +46,8 @@ The Interior Design eCommerce Store is an innovative online platform dedicated t
 
 ## Technologies Used
 
-- **Frontend:** [List of Frontend Technologies/Frameworks]
-- **Backend:** [List of Backend Technologies/Frameworks]
-- **Database:** [Database System Used]
-- **Hosting:** [Hosting Provider]
+- **C#**
+- **Selenium** 
 
 ## Testing Process
 
@@ -64,22 +63,16 @@ The primary objective of testing this project was to evaluate the functionality,
 6. User registration and account management.
 7. Secure checkout process.
 
-### Test Results
+### Test Results Summary
 
-[Provide a summary of your testing results, including any issues or improvements identified during the testing phase.]
-
-### Screenshots
-
-[Include screenshots or images from the project to visually showcase its design and functionality.]
+The site is mostly functioning well with all but one test passing.
 
 ## Conclusion
 
-The Interior Design eCommerce Store project represents a significant step forward in the world of interior design and home decor. It aims to empower users with the tools and inspiration needed to create beautiful living spaces.
+The Interior Design eCommerce Store project represents a significant step forward in the world of interior design and home decor. It aims to empower users with the tools and inspiration needed to create and design different rooms and exteriors virtually.
 
 Future enhancements and optimizations are planned to ensure that this platform continues to evolve and deliver an exceptional user experience.
 
-For more information or inquiries, please contact [Your Contact Information].
-
 ---
 
-Thank you for taking the time to explore our Interior Design eCommerce Store project. We look forward to your feedback and suggestions!
+Thank you for taking the time to explore our testing of the Interior Design eCommerce Store - Virtual Staging Hub. We look forward to your feedback and suggestions!
